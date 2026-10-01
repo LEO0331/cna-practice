@@ -1,6 +1,6 @@
 # CNA Practice
 
-Live site: <https://leo0331.github.io/sharpface/>
+Live site: <https://leo0331.github.io/cna-practice/>
 
 CNA Practice is an independent study app for University of Adelaide Computer Networks and Applications historical exam questions and revision notes. The collection contains every recoverable question and sub-question from the 2013, 2014, and 2015 Semester 1 primary exam papers supplied with this project. Run `npm run stats` for current counts.
 
@@ -31,7 +31,7 @@ npm run build
 
 ## Deployment
 
-The site is a static export (`out/`) published to GitHub Pages. Every push to `main` runs `.github/workflows/deploy.yml`. The workflow runs lint, typecheck and tests, then builds with `PAGES_BASE_PATH=/<repo name>` and deploys `out/` with GitHub's Pages actions. In the repository's **Settings → Pages**, set **Source** to **GitHub Actions**. Pull requests are checked by `.github/workflows/ci.yml` (lint, typecheck, tests, build), and Dependabot (`.github/dependabot.yml`) opens weekly npm and monthly GitHub Actions update PRs. The build also writes `sitemap.xml` from the data. Submit it in Google Search Console, since a project site cannot serve a root `robots.txt`. Live site: <https://leo0331.github.io/sharpface/>.
+The site is a static export (`out/`) published to GitHub Pages. Every push to `main` runs `.github/workflows/deploy.yml`. The workflow runs lint, typecheck and tests, then builds with `PAGES_BASE_PATH=/<repo name>` and deploys `out/` with GitHub's Pages actions. In the repository's **Settings → Pages**, set **Source** to **GitHub Actions**. Pull requests are checked by `.github/workflows/ci.yml` (lint, typecheck, tests, build), and Dependabot (`.github/dependabot.yml`) opens weekly npm and monthly GitHub Actions update PRs. The build also writes `sitemap.xml` from the data. Submit it in Google Search Console, since a project site cannot serve a root `robots.txt`. Live site: <https://leo0331.github.io/cna-practice/>.
 
 ## Pages
 
