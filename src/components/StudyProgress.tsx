@@ -12,7 +12,7 @@ export function StudyProgress({ labels }: { labels: Record<string, string> }) {
   const [loaded, setLoaded] = useState(false);
   function refresh() { setSummary(progressSummary(readProgress(), Object.keys(labels))); }
   useEffect(() => { refresh(); setLoaded(true); }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  if (!loaded) return null;
+  if (!loaded) return <section className="panel study-progress" aria-label="Your progress" role="status">Loading saved progress…</section>;
   const percent = summary.total ? Math.round((summary.reviewed / summary.total) * 100) : 0;
   const started = summary.reviewed > 0 || summary.bookmarked > 0 || summary.lastViewed;
   return <section className="panel study-progress" aria-label="Your progress">

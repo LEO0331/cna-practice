@@ -1,3 +1,5 @@
+import { clearPracticeSession } from "./practice-session.ts";
+
 export type Progress = { reviewed: string[]; bookmarked: string[]; lastViewed?: string };
 const key = "cna-practice-progress-v1";
 const empty: Progress = { reviewed: [], bookmarked: [] };
@@ -12,10 +14,15 @@ export function readProgress(): Progress {
   } catch { return empty; }
 }
 export function saveProgress(value: Progress): void {
-  if (typeof window !== "undefined") localStorage.setItem(key, JSON.stringify(value));
+  try {
+    if (typeof window !== "undefined") localStorage.setItem(key, JSON.stringify(value));
+  } catch { /* Practice remains usable when device storage is unavailable. */ }
 }
 export function clearProgress(): void {
-  if (typeof window !== "undefined") localStorage.removeItem(key);
+  clearPracticeSession();
+  try {
+    if (typeof window !== "undefined") localStorage.removeItem(key);
+  } catch { /* Device storage may be unavailable. */ }
 }
 // Counts only IDs that still exist, so removed or renamed questions are ignored.
 export function progressSummary(progress: Progress, ids: string[]): { reviewed: number; bookmarked: number; total: number; lastViewed?: string } {
