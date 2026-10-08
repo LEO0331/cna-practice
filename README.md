@@ -11,6 +11,15 @@ The app keeps past exam wording separate from original study guidance. It is int
 - Next.js App Router, React, strict TypeScript, Tailwind CSS
 - Local typed question data; no account or database
 - Browser `localStorage` for reviewed, bookmarked, and last viewed progress
+- A production service worker caches the exported question collection for offline use
+
+## Offline use
+
+Open the site online and wait for “Available offline” in the footer before going offline. The production build caches all exported pages, question content, navigation payloads, and app assets, so repeat visits and practice work without a connection. Practice sets, filters, and the current question are saved on this device.
+
+The first visit downloads the collection in the background after the page loads. This uses device storage and mobile data; the build reports its uncompressed size. Caching is unavailable in browsers that block service workers or cache storage, and browsers may evict it. Online use continues if installation fails. Offline caching is disabled in development.
+
+Each build gets a separate cache. An update downloads while online and takes over after all existing site tabs are closed and the site is reopened, avoiding a forced reload during practice. Old caches are then removed. Run `npm run build` to generate `out/sw.js`; deploying an export without this postbuild step does not enable offline use.
 
 ## Run locally
 

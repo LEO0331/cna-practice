@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteUrl } from "@/lib/site";
+import { OfflineCache } from "@/components/OfflineCache";
 import "./globals.css";
 
 const title = "CNA Practice — Computer Networks Past Questions";
@@ -23,6 +24,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </nav>
     </div></header>
     <main>{children}</main>
-    <footer className="site-footer"><div className="container footer-inner"><span>CNA Practice · Independent revision resource</span><span>Historical material may differ from the current syllabus.</span></div></footer>
+    <footer className="site-footer"><div className="container footer-inner"><span>CNA Practice · Independent revision resource</span><span>Historical material may differ from the current syllabus.</span><OfflineCache basePath={process.env.PAGES_BASE_PATH || ""} /></div></footer>
   </body></html>;
 }
